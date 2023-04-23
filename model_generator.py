@@ -1,0 +1,95 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, accuracy_score
+from sklearn import preprocessing
+from sklearn.preprocessing import LabelEncoder
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
+
+# Data collection
+# df = pd.read_csv('/content/Round2_JeeMain_Cutoff_2017-2022.csv')
+
+# used this path for my local machine only
+df = pd.read_csv('D:\College-Admission-Prediction-System\Round2_JeeMain_Cutoff_2017-2022.csv')
+
+# select First 7 columns only
+df = df.iloc[:, :7]
+
+df['Gender'].fillna("Gender-Neutral", inplace=True)
+
+# select all attribute except the first label 
+X = df.iloc[:, 1:]
+
+# select the first column as a result
+y = df.iloc[:, 0]
+
+# all labels that is to be encoded
+cols_to_encode = ['Academic Program Name', 'Quota', 'Seat Type', 'Gender']
+
+# using different encoders for different labels
+i = 0
+encoders={}
+# H = encoder.fit_transform(X[cols_to_encode])
+for col in cols_to_encode:
+    encoders[i] = LabelEncoder()
+    X[col] = encoders[i].fit_transform(X[col])
+    i = i + 1
+
+encoders[i] = LabelEncoder()
+y_label = encoders[i].fit_transform(y)
+
+# Data Splitting in Training and Testing
+X_train, X_test, y_train, y_test = train_test_split(X, y_label, test_size=0.20)
+
+# Random Forest Model for predictions
+rf = RandomForestRegressor(n_estimators=250,
+                           max_features=(2/7),
+                           min_samples_split=5,
+                           n_jobs=2,
+                           random_state=1005)
+
+# Training the Model
+rf.fit(X_train, y_train)
+
+# Model predictions
+train_predictions = rf.predict(X_train)
+test_predictions = rf.predict(X_test)
+
+# Evaluations Metrics
+train_mse = np.sqrt(mean_squared_error(y_train, train_predictions))
+test_mse = np.sqrt(mean_squared_error(y_test, test_predictions))
+train_r2 = rf.score(X_train, y_train)
+test_r2 = rf.score(X_test, y_test)
+
+print("Train MSE ::", train_mse)
+print("Test MSE ::", test_mse)
+print("Train R^2 ::", train_r2)
+print("Test R^2 ::", test_r2)
+
+# # Save the model to disk
+# joblib.dump(rf, 'classifier.joblib')
+
+# Function to interact with the server
+def get_predictions(data):
+
+    # encoding the user input to respective encoding of labels
+    encoded_data = {
+        'Academic Program Name': encoders[0].transform([data['Academic Program Name']])[0],
+        'Quota': encoders[1].transform([data['Quota']])[0],
+        'Seat Type': encoders[2].transform([data['Seat Type']])[0],
+        'Gender': encoders[3].transform([data['Gender']])[0],
+        'Opening Rank': data['Opening Rank'],
+        'Closing Rank': data['Closing Rank'],
+    }
+
+    # Predictions based on encoded_data
+    pred = rf.predict(np.array(list(encoded_data.values())).astype(float).reshape(1, -1))
+
+    # Decoding the predictions so as to provide the predictions with its label value
+    original_label = encoders[4].inverse_transform([int(pred[0])])
+
+    # Returning the result
+    return original_label[0]
