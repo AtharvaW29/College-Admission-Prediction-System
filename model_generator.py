@@ -90,9 +90,9 @@ def get_predictions(data):
     datasets = ["D:\College-Admission-Prediction-System\Round1_JeeMain_Cutoff_2017-2022.csv", "D:\College-Admission-Prediction-System\Round2_JeeMain_Cutoff_2017-2022.csv", "D:\College-Admission-Prediction-System\Round3_JeeMain_Cutoff_2017-2022.csv",
                 "D:\College-Admission-Prediction-System\Round4_JeeMain_Cutoff_2017-2022.csv", "D:\College-Admission-Prediction-System\Round5_JeeMain_Cutoff_2017-2022.csv", "D:\College-Admission-Prediction-System\Round6_JeeMain_Cutoff_2017-2022.csv"]
 
-    print("Please select the round of admissions for which you want to use the prediction system:")
-    for i in range(len(rounds)):
-        print(i+1, rounds[i])
+    # print("Please select the round of admissions for which you want to use the prediction system:")
+    # for i in range(len(rounds)):
+    #     print(i+1, rounds[i])
 
     round_selection = int(data['Round']) - 1
     selected_dataset = datasets[round_selection]
@@ -173,11 +173,11 @@ def get_predictions(data):
     # Returning the result
     return original_label[0]
 
-get_predictions({    
-    'Round': 6,
-    'Academic Program Name': 'Bio Technology (4 Years, Bachelor of Technology)',
-    'Quota': 'HS',
-    'Seat Type': 'OPEN',
-    'Gender': 'Gender-Neutral',
-    'Opening Rank': 6969,
-    'Closing Rank': 9892})
+# get_predictions({    
+#     'Round': 6,
+#     'Academic Program Name': 'Bio Technology (4 Years, Bachelor of Technology)',
+#     'Quota': 'HS',
+#     'Seat Type': 'OPEN',
+#     'Gender': 'Gender-Neutral',
+#     'Opening Rank': 6969,
+#     'Closing Rank': 9892})
