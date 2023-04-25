@@ -181,3 +181,24 @@ def get_predictions(data):
 #     'Gender': 'Gender-Neutral',
 #     'Opening Rank': 6969,
 #     'Closing Rank': 9892})
+##################################################################################
+
+## College listing code ##
+# input_attributes = ["Institute", "Academic Program Name","Quota","Seat Type"]
+# input_values = ["University of Hyderabad", "Computer Science (5 Years, Integrated Master of Technology)", "AI","OPEN"]
+
+# # Create a boolean mask to filter the dataset
+# mask = True
+# for attribute, value in zip(input_attributes, input_values):
+#     mask &= (df[attribute] == value)
+
+# # Filter the dataset to only include rows where the input attributes have the input values
+# subset_df = df[mask]
+
+# # Select the input attributes and the selected attributes
+# selected_attributes = ["Institute", "Academic Program Name","Quota","Seat Type"]
+# selected_df = subset_df[selected_attributes]
+
+# # Print the resulting dataframe
+# # selected_array = selected_df.to_numpy()
+# print(selected_df)
