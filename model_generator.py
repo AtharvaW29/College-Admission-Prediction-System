@@ -13,7 +13,19 @@ from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 # df = pd.read_csv('/content/Round2_JeeMain_Cutoff_2017-2022.csv')
 
 # used this path for my local machine only
-df = pd.read_csv('D:\College-Admission-Prediction-System\Round2_JeeMain_Cutoff_2017-2022.csv')
+# df = pd.read_csv('D:\College-Admission-Prediction-System\Round2_JeeMain_Cutoff_2017-2022.csv')
+rounds = [1, 2, 3, 4, 5, 6]
+datasets = ["/content/Round1_JeeMain_Cutoff_2017-2022.csv", "/content/Round2_JeeMain_Cutoff_2017-2022.csv", "/content/Round3_JeeMain_Cutoff_2017-2022.csv",
+            "/content/Round4_JeeMain_Cutoff_2017-1022.csv", "/content/Round5_JeeMain_Cutoff_2017-2022.csv", "/content/Round6_JeeMain_Cutoff_2017-2022.csv"]
+
+print("Please select the round of admissions for which you want to use the prediction system:")
+for i in range(len(rounds)):
+    print(i+1, rounds[i])
+
+round_selection = int(input()) - 1
+selected_dataset = datasets[round_selection]
+df = pd.read_csv(selected_dataset)
+
 
 # select First 7 columns only
 df = df.iloc[:, :7]
@@ -93,3 +105,10 @@ def get_predictions(data):
 
     # Returning the result
     return original_label[0]
+
+get_predictions({    'Academic Program Name': 'Bio Technology (4 Years, Bachelor of Technology)',
+    'Quota': 'HS',
+    'Seat Type': 'OPEN',
+    'Gender': 'Gender-Neutral',
+    'Opening Rank': 6969,
+    'Closing Rank': 9892})
