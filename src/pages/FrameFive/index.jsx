@@ -25,16 +25,16 @@ const FrameFivePage = ({data, onChange}) => {
           onChange={handleCasteSelect}
         >
           <option value="">Select Caste</option>
-          <option value="GEN">GEN</option>
-          <option value="GEN-EWS">GEN-EWS</option>
-          <option value="GEN-EWS-PWD">GEN-EWS-PWD</option>
-          <option value="GEN-PWD">GEN-PWD</option>
+          <option value="OPEN">OPEN</option>
+          <option value="EWS">EWS</option>
+          <option value="OPEN (PwD)">OPEN (PwD)</option>
+          <option value="OBC-NCL (PwD)">OBC-NCL (PwD)</option>
           <option value="OBC-NCL">OBC-NCL</option>
-          <option value="OBC-NCL-PWD">OBC-NCL-PWD</option>
+          <option value="ST (PwD)">ST (PwD)</option>ST (PwD)
           <option value="SC">SC</option>
-          <option value="SC-PWD">SC-PWD</option>
+          <option value="EWS (PwD)">EWS (PwD)</option>
           <option value="ST">ST</option>
-          <option value="ST-PWD">ST-PWD</option>
+          <option value="SC (PwD)">SC (PwD)</option>
         </select>
       </div>
     </>
