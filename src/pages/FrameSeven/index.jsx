@@ -1,10 +1,46 @@
-import React from "react";
+import React, {useState} from "react";
 
-import { Text, Button } from "components";
+import { Text} from "components";
 import { useNavigate } from "react-router-dom";
 
-const FrameSevenPage = () => {
+const FrameSevenPage = ({data, onChange}) => {
   const navigate = useNavigate();
+  const [rank, setRank] = useState();
+
+  const handleRankChange = (event) => {
+    setRank(event.target.value)
+  };
+
+  const handleKeyDown = (event) => {
+
+    if (event.key === 'Enter') {
+
+      const newData = {...data, 'Opening Rank': rank}
+      onChange(newData)
+
+      // Make API post request here using fetch or axios
+      fetch('http://127.0.0.1:5000', {
+        method: 'POST',
+        body: JSON.stringify(newData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        navigate('/framesix');
+      })
+      .catch(error => {
+        console.error('There was a problem with the API request:', error);
+      });
+    }
+  };
 
   return (
     <>
@@ -16,15 +52,14 @@ const FrameSevenPage = () => {
         >
           Enter your All India Rank!!
         </Text>
-        <Button
-          className="common-pointer cursor-pointer font-normal leading-[normal] mb-[166px] min-w-[430px] sm:min-w-full not-italic sm:text-4xl md:text-[38px] text-[40px] text-center text-gray_300 w-auto"
-          onClick={() => navigate("/frameeight")}
-          shape="RoundedBorder50"
-          size="lg"
-          variant="FillBluegray500"
-        >
-          Type here...
-        </Button>
+        <input
+        className="common-pointer cursor-pointer font-normal leading-[normal] mb-[166px] min-w-[430px] sm:min-w-full not-italic sm:text-4xl md:text-[38px] text-[40px] text-center text-gray_300 w-auto"
+        type="number"
+        value={rank}
+        onChange={handleRankChange}
+        onKeyDown={handleKeyDown}
+        placeholder="Type here..."
+      />
       </div>
     </>
   );

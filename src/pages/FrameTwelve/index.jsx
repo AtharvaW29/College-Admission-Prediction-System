@@ -1,10 +1,18 @@
 import React from "react";
 
-import { Text, Img } from "components";
+import { Text } from "components";
 import { useNavigate } from "react-router-dom";
 
-const FrameTwelvePage = () => {
+const FrameTwelvePage = ({data, onChange}) => {
   const navigate = useNavigate();
+
+  const handleRoundSelect = (event) => {
+    const round_no = Number(event.target.value)
+    const newData = {...data, 'Round': round_no}
+    console.log(newData)
+    onChange(newData)
+    navigate('/framefourteen')
+  };
 
   return (
     <>
@@ -16,23 +24,19 @@ const FrameTwelvePage = () => {
         >
           Select the Round of Admission
         </Text>
-        <div
-          className="common-pointer bg-bluegray_500 flex sm:flex-col flex-row gap-[30px] items-center justify-center mb-[174px] p-[22px] md:px-5 rounded-[50px] w-[34%] md:w-full"
-          onClick={() => navigate("/framethirteen")}
+        <select
+          className="bg-bluegray_500 flex flex-row items-center justify-center mb-[129px] p-[25px] md:px-5 rounded-[50px] shadow-bs1 w-[35%] md:w-full"
+          value={data}
+          onChange={handleRoundSelect}
         >
-          <Text
-            className="font-normal sm:ml-[0] ml-[42px] not-italic text-center text-gray_300 w-auto"
-            as="h5"
-            variant="h5"
-          >
-            Select Round
-          </Text>
-          <Img
-            src="images/img_arrow3.svg"
-            className="h-px mr-[47px] rotate-[-90deg] rounded-[50%] w-[2%]"
-            alt="arrowThree"
-          />
-        </div>
+          <option value="">Select Rounds</option>
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+          <option value='5'>5</option>
+          <option value='6'>6</option>
+        </select>
       </div>
     </>
   );

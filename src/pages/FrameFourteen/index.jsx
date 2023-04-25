@@ -3,8 +3,14 @@ import React from "react";
 import { Text, Button } from "components";
 import { useNavigate } from "react-router-dom";
 
-const FrameFourteenPage = () => {
+const FrameFourteenPage = ({data, onChange}) => {
   const navigate = useNavigate();
+
+  const handleQuotaSelect = (quota) => {
+    const newData = {...data, 'Quota': quota}
+    console.log(newData)
+    onChange(newData)
+  };
 
   return (
     <>
@@ -19,7 +25,10 @@ const FrameFourteenPage = () => {
         <div className="flex md:flex-col flex-row md:gap-10 gap-[206px] items-start justify-between mb-[165px] self-stretch w-auto md:w-full">
           <Button
             className="common-pointer cursor-pointer font-normal leading-[normal] min-w-[430px] sm:min-w-full not-italic text-4xl sm:text-[32px] md:text-[34px] text-center text-white_A700 w-auto"
-            onClick={() => navigate("/frameseven")}
+            onClick={() => {
+              handleQuotaSelect('HS')
+              navigate("/frameseven")
+            }}
             shape="RoundedBorder50"
             size="xl"
             variant="OutlineBlack9007f_1"
@@ -28,7 +37,10 @@ const FrameFourteenPage = () => {
           </Button>
           <Button
             className="common-pointer cursor-pointer font-normal leading-[normal] min-w-[430px] sm:min-w-full not-italic text-4xl sm:text-[32px] md:text-[34px] text-center text-white_A700 w-auto"
-            onClick={() => navigate("/frameseven")}
+            onClick={() => {
+              handleQuotaSelect('OS')
+              navigate("/frameseven")
+            }}
             shape="RoundedBorder50"
             size="xl"
             variant="OutlineBlack9007f"

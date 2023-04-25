@@ -34,13 +34,13 @@ const ProjectRoutes = () => {
         <Routes>
           <Route path="/" element={<FrameOne />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/framefive" element={<FrameFive />} />
-          <Route path="/frametwelve" element={<FrameTwelve />} />
+          <Route path="/framefive" element={<FrameFive data={data} onChange={setData}/>} />
+          <Route path="/frametwelve" element={<FrameTwelve data={data} onChange={setData}/>} />
           <Route path="/framethirteen" element={<FrameThirteen />} />
           <Route path="/framethree" element={<FrameThree data={data} onChange={setData}/>} />
           <Route path="/framefour" element={<FrameFour />} />
-          <Route path="/frameseven" element={<FrameSeven />} />
-          <Route path="/framefourteen" element={<FrameFourteen />} />
+          <Route path="/frameseven" element={<FrameSeven data={data} onChange={setData} />} />
+          <Route path="/framefourteen" element={<FrameFourteen data={data} onChange={setData}/>} />
           <Route path="/frametwo" element={<FrameTwo />} />
           <Route path="/frameeight" element={<FrameEight />} />
           <Route path="/framesix" element={<FrameSix />} />
