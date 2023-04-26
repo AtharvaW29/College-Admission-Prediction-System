@@ -153,7 +153,9 @@ def get_predictions(data):
     print("Test MSE ::", test_mse)
     print("Train R^2 ::", train_r2)
     print("Test R^2 ::", test_r2)
+    data['Closing Rank'] = float(data['Opening Rank']) + 0.5 * float(data['Opening Rank'])
 
+    print(data['Closing Rank'])
     # encoding the user input to respective encoding of labels
     encoded_data = {
         'Academic Program Name': encoders[0].transform([data['Academic Program Name']])[0],
