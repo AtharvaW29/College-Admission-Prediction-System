@@ -27,7 +27,7 @@ const FrameFourteenPage = ({data, onChange}) => {
             className="common-pointer cursor-pointer font-normal leading-[normal] min-w-[430px] sm:min-w-full not-italic text-4xl sm:text-[32px] md:text-[34px] text-center text-white_A700 w-auto"
             onClick={() => {
               handleQuotaSelect('HS')
-              navigate("/frameseven")
+              navigate("/framefifteen")
             }}
             shape="RoundedBorder50"
             size="xl"
@@ -39,7 +39,7 @@ const FrameFourteenPage = ({data, onChange}) => {
             className="common-pointer cursor-pointer font-normal leading-[normal] min-w-[430px] sm:min-w-full not-italic text-4xl sm:text-[32px] md:text-[34px] text-center text-white_A700 w-auto"
             onClick={() => {
               handleQuotaSelect('OS')
-              navigate("/frameseven")
+              navigate("/framefifteen")
             }}
             shape="RoundedBorder50"
             size="xl"

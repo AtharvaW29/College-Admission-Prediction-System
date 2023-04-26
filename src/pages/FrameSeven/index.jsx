@@ -4,7 +4,7 @@ import { Text } from "components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const FrameSevenPage = ({ data, onChange }) => {
+const FrameSevenPage = ({ data, onChange, onChangeResult}) => {
   const navigate = useNavigate();
   const [rank, setRank] = useState();
 
@@ -19,7 +19,7 @@ const FrameSevenPage = ({ data, onChange }) => {
 
       // Make API post request here using fetch or axios
       await axios
-        .post("http://127.0.0.1:5000", newData, {
+        .post("http://localhost:5000", newData, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -28,6 +28,7 @@ const FrameSevenPage = ({ data, onChange }) => {
         })
         .then((response) => {
           console.log(response.data);
+          onChangeResult(response.data)
           navigate("/framesix");
         })
         .catch((error) => {
@@ -47,7 +48,7 @@ const FrameSevenPage = ({ data, onChange }) => {
           Enter your All India Rank!!
         </Text>
         <input
-          className="common-pointer cursor-pointer font-normal leading-[normal] mb-[166px] min-w-[430px] sm:min-w-full not-italic sm:text-4xl md:text-[38px] text-[40px] text-center text-gray_300 w-auto"
+          className="common-pointer cursor-pointer font-normal leading-[normal] mb-[166px] min-w-[430px] sm:min-w-full not-italic sm:text-4xl md:text-[38px] text-[40px] text-center text-black_300 w-auto"
           type="number"
           value={rank}
           onChange={handleRankChange}

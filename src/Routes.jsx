@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "pages/Home";
+import Home from "pages/Home";  
 import NotFound from "pages/NotFound";
+const FrameFifteen = React.lazy(() => import("pages/FrameFifteen"));
 const FrameEleven = React.lazy(() => import("pages/FrameEleven"));
 const FrameTen = React.lazy(() => import("pages/FrameTen"));
 const FrameNine = React.lazy(() => import("pages/FrameNine"));
@@ -28,6 +29,8 @@ const ProjectRoutes = () => {
     'Closing Rank': 9892
   })
 
+  const [result, setResult] = useState('')
+
   return (
     <React.Suspense fallback={<>Loading...</>}>
       <Router>
@@ -39,14 +42,15 @@ const ProjectRoutes = () => {
           <Route path="/framethirteen" element={<FrameThirteen />} />
           <Route path="/framethree" element={<FrameThree data={data} onChange={setData}/>} />
           <Route path="/framefour" element={<FrameFour />} />
-          <Route path="/frameseven" element={<FrameSeven data={data} onChange={setData} />} />
+          <Route path="/frameseven" element={<FrameSeven data={data} onChange={setData} onChangeResult={setResult}/>} />
           <Route path="/framefourteen" element={<FrameFourteen data={data} onChange={setData}/>} />
           <Route path="/frametwo" element={<FrameTwo />} />
           <Route path="/frameeight" element={<FrameEight />} />
-          <Route path="/framesix" element={<FrameSix />} />
+          <Route path="/framesix" element={<FrameSix result={result}/>} />
           <Route path="/framenine" element={<FrameNine />} />
           <Route path="/frameten" element={<FrameTen />} />
           <Route path="/frameeleven" element={<FrameEleven />} />
+          <Route path="/framefifteen" element={<FrameFifteen data={data} onChange={setData}/>} />
           <Route path="/dhiwise-dashboard" element={<Home />} />
         </Routes>
       </Router>

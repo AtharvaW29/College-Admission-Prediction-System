@@ -1,4 +1,3 @@
-import React from "react";
 import { Text } from "components";
 import { useNavigate } from "react-router-dom";
 
@@ -23,18 +22,19 @@ const FrameFivePage = ({data, onChange}) => {
           className="bg-bluegray_500 flex flex-row items-center justify-center mb-[129px] p-[25px] md:px-5 rounded-[50px] shadow-bs1 w-[35%] md:w-full"
           value={data}
           onChange={handleCasteSelect}
+          style={{ fontSize: "125%", color: "white" }}
         >
-          <option value="">Select Caste</option>
-          <option value="OPEN">OPEN</option>
-          <option value="EWS">EWS</option>
-          <option value="OPEN (PwD)">OPEN (PwD)</option>
-          <option value="OBC-NCL (PwD)">OBC-NCL (PwD)</option>
-          <option value="OBC-NCL">OBC-NCL</option>
-          <option value="ST (PwD)">ST (PwD)</option>ST (PwD)
-          <option value="SC">SC</option>
-          <option value="EWS (PwD)">EWS (PwD)</option>
-          <option value="ST">ST</option>
-          <option value="SC (PwD)">SC (PwD)</option>
+          <option style={{color: "white"}} value="">Select Caste</option>
+          <option style={{color: "white"}} value="OPEN">OPEN</option>
+          <option  style={{color: "white"}}value="EWS">EWS</option>
+          <option  style={{color: "white"}}value="OPEN (PwD)">OPEN (PwD)</option>
+          <option  style={{color: "white"}}value="OBC-NCL (PwD)">OBC-NCL (PwD)</option>
+          <option  style={{color: "white"}}value="OBC-NCL">OBC-NCL</option>
+          <option  style={{color: "white"}}value="ST (PwD)">ST (PwD)</option>ST (PwD)
+          <option  style={{color: "white"}}value="SC">SC</option>
+          <option  style={{color: "white"}}value="EWS (PwD)">EWS (PwD)</option>
+          <option  style={{color: "white"}}value="ST">ST</option>
+          <option  style={{color: "white"}}value="SC (PwD)">SC (PwD)</option>
         </select>
       </div>
     </>

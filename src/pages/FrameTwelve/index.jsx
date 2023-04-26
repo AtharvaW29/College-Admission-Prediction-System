@@ -28,14 +28,15 @@ const FrameTwelvePage = ({data, onChange}) => {
           className="bg-bluegray_500 flex flex-row items-center justify-center mb-[129px] p-[25px] md:px-5 rounded-[50px] shadow-bs1 w-[35%] md:w-full"
           value={data}
           onChange={handleRoundSelect}
+          style={{ fontSize: "125%", color: "white" }}
         >
-          <option value="">Select Rounds</option>
-          <option value='1'>1</option>
-          <option value='2'>2</option>
-          <option value='3'>3</option>
-          <option value='4'>4</option>
-          <option value='5'>5</option>
-          <option value='6'>6</option>
+          <option style={{color: "white" }} value="">Select Rounds</option>
+          <option style={{color: "white" }}value='1'>1</option>
+          <option style={{color: "white" }}value='2'>2</option>
+          <option style={{color: "white" }}value='3'>3</option>
+          <option style={{color: "white" }}value='4'>4</option>
+          <option style={{color: "white" }}value='5'>5</option>
+          <option style={{color: "white" }}value='6'>6</option>
         </select>
       </div>
     </>
