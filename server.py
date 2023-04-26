@@ -20,19 +20,17 @@ def add_cors_headers(response):
     return response
 
 # route to get the predictions
-@flask_app.route("/",methods=["POST"])
+@flask_app.route("/",methods=["POST", "GET"])
 def show():
     # retreiving information provided by the user
     formData = request.data.decode("utf-8")
 
     # converting it in json format
     data = json.loads(formData)
-
     # sending the parameters from data for predictions
-    result = get_predictions(data['custom_input'])
+    result = get_predictions(data)
 
-    # returning the result of the prediction
+        # returning the result of the prediction
     return result
-
 if __name__ == '__main__':
     flask_app.run(debug=True)

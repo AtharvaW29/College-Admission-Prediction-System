@@ -87,8 +87,9 @@ from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 # Function to interact with the server
 def get_predictions(data):
     rounds = [1, 2, 3, 4, 5, 6]
-    datasets = ["D:\College-Admission-Prediction-System\Round1_JeeMain_Cutoff_2017-2022.csv", "D:\College-Admission-Prediction-System\Round2_JeeMain_Cutoff_2017-2022.csv", "D:\College-Admission-Prediction-System\Round3_JeeMain_Cutoff_2017-2022.csv",
-                "D:\College-Admission-Prediction-System\Round4_JeeMain_Cutoff_2017-2022.csv", "D:\College-Admission-Prediction-System\Round5_JeeMain_Cutoff_2017-2022.csv", "D:\College-Admission-Prediction-System\Round6_JeeMain_Cutoff_2017-2022.csv"]
+    datasets = ["./Round1_JeeMain_Cutoff_2017-2022.csv", "./Round2_JeeMain_Cutoff_2017-2022.csv",
+                "./Round3_JeeMain_Cutoff_2017-2022.csv", "./Round4_JeeMain_Cutoff_2017-1022.csv",
+                "./Round5_JeeMain_Cutoff_2017-2022.csv", "./Round6_JeeMain_Cutoff_2017-2022.csv"]
 
     # print("Please select the round of admissions for which you want to use the prediction system:")
     # for i in range(len(rounds)):
