@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 flask_app = Flask(__name__)
 
-CORS(flask_app, resources={r"/*": {"origins": "https://college-admission-front-end.vercel.app/"}})
+CORS(flask_app, resources={r"/*": {"origins": "*"}})
 
 # # loading the save model
 # classifier = joblib.load('classifier.joblib')
@@ -13,8 +13,9 @@ CORS(flask_app, resources={r"/*": {"origins": "https://college-admission-front-e
 @flask_app.after_request
 def add_cors_headers(response):
     # response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
-    response.headers.add('Access-Control-Allow-Origin', 'https://college-admission-front-end.vercel.app/')
+    response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    response.headers.add('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
     response.headers.add('Access-Control-Allow-Credentials', 'true')
     return response
 
