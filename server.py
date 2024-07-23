@@ -1,7 +1,5 @@
 from flask import Flask, request, jsonify, make_response
-import numpy as np
 import json
-import sys
 from model_generator import get_predictions
 from flask_cors import CORS
 
@@ -33,5 +31,12 @@ def show():
 
         # returning the result of the prediction
     return result
+
+@flask_app.route("/hello", methods=["GET"])
+def sample():
+    hello = "Hello World"
+
+    return hello
+
 if __name__ == '__main__':
-    flask_app.run(debug=True)
+    flask_app.run(host='0.0.0.0', port=5000, debug=True)
