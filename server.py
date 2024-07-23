@@ -21,7 +21,7 @@ def add_cors_headers(response):
     return response
 
 # route to get the predictions
-@flask_app.route("/",methods=["POST", "GET"])
+@flask_app.route("/predict",methods=["POST", "GET"])
 def show():
     # retreiving information provided by the user
     formData = request.data.decode("utf-8")
